@@ -1,0 +1,63 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/auth-server
+    username: postgres
+    password: password
+    driver-class-name: org.postgresql.Driver
+    tomcat:
+      test-while-idle: true
+      validation-query: SELECT 1
+    initialization-mode: never
+    platform: postgresql
+  jpa:
+    properties:
+      hibernate:
+        format_sql: true
+        ddl-auto: create-drop
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        jdbc:
+          lob:
+            non_contextual_creation: true
+    show-sql: true
+
+authentication:
+  jwt:
+    tokenExpiryTimeMinutes: 30
+    public-key: |
+      -----BEGIN PUBLIC KEY-----
+      MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArWt4EgCQV6GCOARHmUhe
+      I6liWBRA0QLj8B3OeZB9xGcFuE5Nw+kdqnr+dzZUkkY6QRGvTAPXgNGuGUKZr3IG
+      4RpY1W5fHBOk487qaSNLEWdkASfZ8XxBXiAKgfmsmBvnK2ff+URUf9HaceNuES4E
+      /aQHZZ5KAMAKnejeI/b+qh5hmnk7iQd5rRJrVzpfUo9ZhDr56MBI6Nlq3TdGnwpo
+      RCUVun6VI7vBDq4jtwWo9G1oNL9aIYIF/QiPRHp7Hr5+AG/5LexZrbAicKI12MCq
+      p5zb+pJGZsdC31qgxK7FUpd/zeVIfq8MyGMXx2kGCOF9YC8JyK64rE7Y12cn0IAn
+      CwIDAQAB
+      -----END PUBLIC KEY-----
+    private-key: |
+      -----BEGIN RSA PRIVATE KEY-----
+      MIIEowIBAAKCAQEArWt4EgCQV6GCOARHmUheI6liWBRA0QLj8B3OeZB9xGcFuE5N
+      w+kdqnr+dzZUkkY6QRGvTAPXgNGuGUKZr3IG4RpY1W5fHBOk487qaSNLEWdkASfZ
+      8XxBXiAKgfmsmBvnK2ff+URUf9HaceNuES4E/aQHZZ5KAMAKnejeI/b+qh5hmnk7
+      iQd5rRJrVzpfUo9ZhDr56MBI6Nlq3TdGnwpoRCUVun6VI7vBDq4jtwWo9G1oNL9a
+      IYIF/QiPRHp7Hr5+AG/5LexZrbAicKI12MCqp5zb+pJGZsdC31qgxK7FUpd/zeVI
+      fq8MyGMXx2kGCOF9YC8JyK64rE7Y12cn0IAnCwIDAQABAoIBADP5BlYW1yt8GuOg
+      3LhiiNwVMoUFJNu/CwL2W9/w3tBSs9MlnIa/QYXLMKIXpUblRyYjH68fY6GWtZ+a
+      Zya+fLNPyxnD5zsp4/vmEjiKPEAuBTmXcOi/fXOxFJUZd5Fqo2BN1EEHKm/YO6hw
+      KZd6fEJru0/IHZOV+liS5qhOqMngrC3HYXlGZg6yWsZEN2w0+C1NdnLrbZ+FA+zU
+      19XJFNtr+sXJf66I0Vex9qQQU9nuRXK0MQhCYPgy6aCn4ag3k5H1bgMjfi3UqmqX
+      vM8CI5PryXNZZkmFFHZiY9Jjv1i/B2TgpObkklmWNXrc46acl++kMWiMcahf1gcf
+      8MGPKhkCgYEA5+ZS2GGPxyQ62U7Um47nvLgc8CTMw4qy6RY9XNuUl1Tx4tAGD88l
+      wPfu+OnEKzZE85+osf8MCqC2GjQEoqcTAn4BwMBgwNdAADylJbewxR+xDfUAitXR
+      bK6d7og422TIyU3B07bdFJGoPzkCs2l7t3k2xsgF4HzWEIGQg54HYVUCgYEAv3FK
+      nlHeYzwUaCWHTh0+vHq2QIDJ8tc27IcCMa09CCcXfHTf9xp5WnJVF6rmEnT4gvWL
+      ZHGBqEZPLMvvJggBP6niZHmsX4/tI5t9O9XYAytcueVCkbPE66NivwZ+GkCez67x
+      ZUazGhzxAEu9PVGRj111toNNBH1/64BeYOwg5t8CgYA4nmqBvCg/hd/8aJvOMzDv
+      ScB+/W0lHPsbn7txrYb0/99i8klYmMnt+FrXWTP1HPXuyX+FnfDRs3VipmqvT717
+      cUp6Rj4ZNzTAGg50TAoTxu4Sq0vrmdLdBzE2KPpAzrWbOKnnSBFoUTvT29aF+W4k
+      WKsAE5wjuDcHpqqjB/VjVQKBgEzzlgHTeKe805sVUrDkcn5CeRWubv6M4YfrsMcV
+      Eo4/YGJnfEsQOi1P/cI4sKhEmkvRtUkXkv133YVtJ+DKoO3dNKIcglwbNz/z1UAC
+      8gQ8HtaeP8bfUs1A7IVKb8/Pn8ZtVJzX8VASyBDNYPDP48mT0KgfWQrwA0Y/YDBn
+      WcZTAoGBANgipI8WPZisMU52v1/vFNlwfjdyEB2AlK2AKss9qLF/xQwWjfKxopHP
+      OzfCl3sxiy19g4vea6LVBOl0ce/lec+LSlKEQDWh0qSzCNbhDN9YVt/yNpt7mGxt
+      LrGlX0R794R2VFI/HxUMvzh/KgcQwvaOWHUGZhseLYs8J/0XOAVc
+      -----END RSA PRIVATE KEY-----
